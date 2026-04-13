@@ -52,23 +52,23 @@ function Machine3D({ activeMachine }: { activeMachine: typeof machines[0] }) {
         </mesh>
 
         {/* Lines */}
-        <Line points={[[0, 0.5, 0], [-3.5, 2, 0]]} color="white" opacity={0.4} transparent lineWidth={1.5} />
-        <Line points={[[0, 0.5, 0], [3.5, 2, 0]]} color="white" opacity={0.4} transparent lineWidth={1.5} />
-        <Line points={[[0, -0.5, 0], [3.5, -2, 0]]} color="white" opacity={0.4} transparent lineWidth={1.5} />
+        <Line points={[[0, 0.5, 0], [-2.8, 1.8, 0]]} color="white" opacity={0.4} transparent lineWidth={1.5} />
+        <Line points={[[0, 0.5, 0], [2.8, 1.8, 0]]} color="white" opacity={0.4} transparent lineWidth={1.5} />
+        <Line points={[[0, -0.5, 0], [2.8, -1.8, 0]]} color="white" opacity={0.4} transparent lineWidth={1.5} />
         
         {/* Anchor Points for Cards */}
-        <Html position={[-3.5, 2, 0]} center zIndexRange={[100, 0]} style={{ pointerEvents: 'none' }}>
-          <div className="pointer-events-auto">
+        <Html position={[-2.8, 1.8, 0]} center zIndexRange={[100, 0]} style={{ pointerEvents: 'none' }}>
+          <div className="pointer-events-auto scale-[0.65] lg:scale-100 origin-center">
             <DataCard icon={<Thermometer className="w-4 h-4 text-rose-400" />} label="Core Temp" value={activeMachine.temp} trend="+2.4%" />
           </div>
         </Html>
-        <Html position={[3.5, 2, 0]} center zIndexRange={[100, 0]} style={{ pointerEvents: 'none' }}>
-          <div className="pointer-events-auto">
+        <Html position={[2.8, 1.8, 0]} center zIndexRange={[100, 0]} style={{ pointerEvents: 'none' }}>
+          <div className="pointer-events-auto scale-[0.65] lg:scale-100 origin-center">
             <DataCard icon={<Gauge className="w-4 h-4 text-cyan-400" />} label="Rotational Speed" value={activeMachine.rpm} unit="RPM" />
           </div>
         </Html>
-        <Html position={[3.5, -2, 0]} center zIndexRange={[100, 0]} style={{ pointerEvents: 'none' }}>
-          <div className="pointer-events-auto">
+        <Html position={[2.8, -1.8, 0]} center zIndexRange={[100, 0]} style={{ pointerEvents: 'none' }}>
+          <div className="pointer-events-auto scale-[0.65] lg:scale-100 origin-center">
             <DataCard icon={<Zap className="w-4 h-4 text-amber-400" />} label="Power Output" value={activeMachine.power} trend="-0.5%" trendDown />
           </div>
         </Html>
@@ -98,14 +98,14 @@ export default function SpatialUI() {
       </div>
 
       {/* UI Layer */}
-      <div className="relative z-10 w-full h-full flex items-center p-8">
+      <div className="relative z-10 w-full h-full flex flex-col-reverse lg:flex-row items-center p-4 lg:p-8 gap-4 lg:gap-8">
         
         {/* Left Sidebar - Selection Menu */}
         <motion.div 
           initial={{ opacity: 0, x: -50, filter: 'blur(10px)' }}
           animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="w-80 h-[85vh] flex flex-col gap-6 rounded-[2.5rem] bg-white/5 backdrop-blur-3xl border border-white/10 shadow-[0_24px_64px_rgba(0,0,0,0.6)] p-6 relative overflow-hidden"
+          className="w-full lg:w-80 h-[35%] lg:h-[85vh] shrink-0 flex flex-col gap-3 lg:gap-6 rounded-[2rem] lg:rounded-[2.5rem] bg-white/5 backdrop-blur-3xl border border-white/10 shadow-[0_24px_64px_rgba(0,0,0,0.6)] p-4 lg:p-6 relative overflow-hidden"
         >
           {/* Subtle inner highlight */}
           <div className="absolute inset-0 rounded-[2.5rem] border border-white/5 pointer-events-none" />
@@ -123,14 +123,14 @@ export default function SpatialUI() {
 
           <div className="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent my-2" />
 
-          <div className="flex-1 overflow-y-auto space-y-3 pr-2 scrollbar-none relative z-10">
+          <div className="flex-1 overflow-y-auto space-y-2 lg:space-y-3 pr-2 scrollbar-none relative z-10">
             {machines.map((machine) => {
               const isActive = activeMachineId === machine.id;
               return (
                 <button
                   key={machine.id}
                   onClick={() => setActiveMachineId(machine.id)}
-                  className={`w-full text-left p-4 rounded-3xl transition-all duration-500 relative group overflow-hidden ${
+                  className={`w-full text-left p-3 lg:p-4 rounded-2xl lg:rounded-3xl transition-all duration-500 relative group overflow-hidden ${
                     isActive 
                       ? 'bg-white/15 border-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.3)]' 
                       : 'bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/20'
@@ -176,8 +176,8 @@ export default function SpatialUI() {
         </motion.div>
 
         {/* Center Stage - Interactive 3D Machine */}
-        <div className="flex-1 h-full relative flex items-center justify-center z-20 cursor-move">
-          <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
+        <div className="flex-1 w-full h-[65%] lg:h-full relative flex items-center justify-center z-20 cursor-move">
+          <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
             <ambientLight intensity={0.5} />
             <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} />
             <Environment preset="city" />
