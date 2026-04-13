@@ -1,20 +1,16 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Facility Alpha - Spatial AR Overlay
 
-# Run and deploy your AI Studio app
+A premium AR/VR web application UI mimicking Apple Vision Pro's Spatial UI.
 
-This contains everything you need to run your app locally.
+## Features
+- **Spatial Glassmorphism**: Heavy use of backdrop-filter blur, translucent borders, and deep shadows.
+- **Interactive 3D Model**: Built with React Three Fiber, allowing users to rotate, zoom, and pan the machine model.
+- **Dynamic AR Data Cards**: Data cards are anchored to the 3D model and adjust dynamically to its orientation.
+- **Cinematic UI**: Smooth, buttery CSS transitions and Framer Motion animations for a futuristic AR headset feel.
 
-View your app in AI Studio: https://ai.studio/apps/132c872d-7460-4622-b518-cf61dcae7b21
-
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Tech Stack
+- Next.js 15 (App Router)
+- Tailwind CSS v4
+- Framer Motion
+- Three.js & React Three Fiber
+- Lucide React (Icons)

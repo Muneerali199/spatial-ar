@@ -5,7 +5,7 @@ import './globals.css'; // Global styles
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
-  title: 'Spatial AR Overlay',
+  title: 'Facility Alpha | AR Interface',
   description: 'Premium AR/VR web application UI',
 };
 

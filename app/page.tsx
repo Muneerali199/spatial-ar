@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { motion } from 'motion/react';
-import { Activity, Thermometer, Gauge, Zap, Cpu, Settings, Box } from 'lucide-react';
+import { Activity, Thermometer, Gauge, Zap, Cpu, Settings, Hexagon } from 'lucide-react';
 import Image from 'next/image';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Html, Line, Environment, Float } from '@react-three/drei';
@@ -113,7 +113,7 @@ export default function SpatialUI() {
           
           <div className="flex items-center gap-4 px-2 pt-2 relative z-10">
             <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/20 shadow-inner backdrop-blur-md">
-              <Box className="w-6 h-6 text-white/90" />
+              <Hexagon className="w-6 h-6 text-white/90" />
             </div>
             <div>
               <h1 className="text-xl font-medium tracking-tight text-white/90">Facility Alpha</h1>
